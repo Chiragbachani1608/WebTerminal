@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+
+    <script>
+        $(document).ready(function() {
+            $('body').terminal({
+                hello: function(what) {
+                    this.echo('Hello, ' + what +
+                              '. Welcome to this terminal.');
+                },
+                cat: function(width, height) {
+                    const img = $('<img src="https://placekitten.com/' +
+                                  width + '/' + height + '">');
+                    this.echo(img);
+                },
+                chirag: function() {
+                    this.echo('Hey there, Chirag!');
+                },
+                play: function(song) {
+                    var audio = new Audio(song);
+                    audio.play();
+                    this.echo('Now playing: ' + song);
+                }
+            }, {
+                greetings: '\n' + 
+                    ' _______  _______  ______    __   __  ___   __    _  _______  ___     \n' + 
+                    '|       ||       ||    _ |  |  |_|  ||   | |  |  | ||   _   ||   |    \n' +
+                    '|_     _||    ___||   | ||  |       ||   | |   |_| ||  |_|  ||   |    \n' +
+                    '  |   |  |   |___ |   |_||_ |       ||   | |       ||       ||   |    \n' +
+                    '  |   |  |    ___||    __  ||       ||   | |  _    ||       ||   |___ \n' +
+                    '  |   |  |   |___ |   |  | || ||_|| ||   | | | |   ||   _   ||       |\n' +
+                    '  |___|  |_______||___|  |_||_|   |_||___| |_|  |__||__| |__||_______|\n' + 
+                    '\nWelcome to Chirag\'s Web Terminal!'
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
