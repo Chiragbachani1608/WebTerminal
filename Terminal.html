@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
 
     <script>
+        // Function to fetch a random inspirational quote from an API
+        function getRandomInspirationalQuote() {
+            return fetch('https://api.example.com/inspire')
+                .then(response => response.json())
+                .then(data => data.quote);
+        }
+
         $(document).ready(function() {
             $('body').terminal({
                 hello: function(what) {
@@ -24,6 +31,12 @@
                     var audio = new Audio(song);
                     audio.play();
                     this.echo('Now playing: ' + song);
+                },
+                inspire: function() {
+                    var terminal = this;
+                    getRandomInspirationalQuote().then(function(quote) {
+                        terminal.echo('Here is your inspirational quote:\n' + quote);
+                    });
                 }
             }, {
                 greetings: '\n' + 
