@@ -16,8 +16,7 @@
         $(document).ready(function() {
             $('body').terminal({
                 hello: function(what) {
-                    this.echo('Hello, ' + what +
-                              '. Welcome to this terminal.');
+                    this.echo('Hello, ' + what + '. Welcome to this terminal.');
                 },
                 cat: function(width, height) {
                     const img = $('<img src="https://placekitten.com/' +
@@ -27,10 +26,14 @@
                 chirag: function() {
                     this.echo('Hey there, Chirag!');
                 },
-                play: function(song) {
-                    var audio = new Audio(song);
-                    audio.play();
-                    this.echo('Now playing: ' + song);
+                play: function(songUrl) {
+                    if (songUrl) {
+                        var audio = new Audio(songUrl);
+                        audio.play();
+                        this.echo('Now playing: ' + songUrl);
+                    } else {
+                        this.echo('Please provide a valid song URL.');
+                    }
                 },
                 inspire: function() {
                     var terminal = this;
@@ -39,14 +42,14 @@
                     });
                 }
             }, {
-                greetings: '\n' + 
-                    ' _______  _______  ______    __   __  ___   __    _  _______  ___     \n' + 
+                greetings: '\n' +
+                    ' _______  _______  ______    __   __  ___   __    _  _______  ___     \n' +
                     '|       ||       ||    _ |  |  |_|  ||   | |  |  | ||   _   ||   |    \n' +
                     '|_     _||    ___||   | ||  |       ||   | |   |_| ||  |_|  ||   |    \n' +
                     '  |   |  |   |___ |   |_||_ |       ||   | |       ||       ||   |    \n' +
                     '  |   |  |    ___||    __  ||       ||   | |  _    ||       ||   |___ \n' +
                     '  |   |  |   |___ |   |  | || ||_|| ||   | | | |   ||   _   ||       |\n' +
-                    '  |___|  |_______||___|  |_||_|   |_||___| |_|  |__||__| |__||_______|\n' + 
+                    '  |___|  |_______||___|  |_||_|   |_||___| |_|  |__||__| |__||_______|\n' +
                     '\nWelcome to Chirag\'s Web Terminal!'
             });
         });
